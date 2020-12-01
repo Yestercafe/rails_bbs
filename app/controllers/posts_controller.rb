@@ -10,6 +10,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @comments = @post.comments
   end
 
   # GET /posts/new
@@ -24,7 +25,13 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(post_params)
+    params = post_params
+    unless user_signed_in?
+      format.html { redirect_to root_path, alert: 'Not sign in.' }
+    else
+      params[:user_id] = current_user.id
+    end
+    @post = Post.new(params)
 
     respond_to do |format|
       if @post.save

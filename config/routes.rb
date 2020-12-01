@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :comments
   resources :posts
+  resources :comments
   devise_for :users
   get 'home/index'
   get 'users', to: 'users#index'
