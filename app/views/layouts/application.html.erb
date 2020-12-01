@@ -11,9 +11,25 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
   </head>
 
-  <body class="container">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+  <body>
+    <%= render 'shared/navbar' %>
+    <div class="container" style="padding-top: 2em">
+      <% if notice %>
+        <div class="card bg-info">
+          <div class="card-body text-white">
+            <%= notice %>
+          </div>
+        </div>
+      <% end %>
+      <% if alert %>
+        <div class="card bg-warning">
+          <div class="card-body">
+            <%= alert %>
+          </div>
+        </div>
+      <% end %>
+      <%= yield %>
+    </div>
+    <%= render 'shared/footer' %>
   </body>
 </html>
