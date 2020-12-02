@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
-  resources :posts
-  resources :comments
+  resources :posts, only: [:create, :new, :show, :destroy]
+  resources :comments, only: [:create, :new, :destroy]
   devise_for :users
   get 'manager', to: 'home#manager'
   get 'users/:id', to: 'users#detail', as: :user
