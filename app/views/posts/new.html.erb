@@ -1,5 +1,6 @@
-<h1>New Post</h1>
+<% provide :title, 'New Post' %>
+<h1 style="margin-bottom:1em">New Post</h1>
+
+<%= button_to 'Back', root_path, method: :get, class: 'btn btn-dark' %>
 
 <%= render 'form', post: @post %>
-
-<%= link_to 'Back', root_path %>

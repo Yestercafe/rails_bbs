@@ -1,35 +1,31 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @post.content %>
-</p>
-
+<% provide :title, @post.title %>
+<h2 style="margin-top:.5em;margin-bottom:.5em"><%= @post.title %></h2>
 <p>
   <strong>User:</strong>
-  <%= @post.user %>
+  <%= link_to @post.user.name, @post.user %>
+</p>
+<%= button_to 'Back', root_path, method: :get, class: 'btn btn-dark' %>
+
+<p style="margin-top:2em;text-indent:2em;font-size:22px">
+  <%= @post.content %>
 </p>
 
 <% if @post.comments.any?%>
 <%= render @comments %>
 <% end %>
 
-<%= form_with(model: @post.comments.build, local: true) do |form| %>
-  <div class="field">
-    <%= form.label "Comment Here" %>
-    <%= form.text_area :content, id: :comment_content %>
-  </div>
+<% if user_signed_in? %>
+  <%= form_with(model: @post.comments.build, local: true) do |form| %>
+    <div class="field">
+      <h3><%= form.label "You can comment here:" %></h3>
+      <%= form.text_area :content, id: :comment_content, class: 'form-control' %>
+    </div>
+    <br>
 
-  <%= form.hidden_field :post_id, value: @post.id %>
+    <%= form.hidden_field :post_id, value: @post.id %>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <div class="actions">
+      <%= form.submit class: 'btn btn-dark' %>
+    </div>
+  <% end %>
 <% end %>
-
-<%= link_to 'Back', root_path %>

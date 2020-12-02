@@ -11,14 +11,16 @@
     </div>
   <% end %>
 
+  <br>
   <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :post_title %>
+    <%= form.label :title %><br>
+    <%= form.text_field :title, id: :post_title, class: 'form-control' %>
   </div>
 
+  <br>
   <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content, id: :post_content %>
+    <%= form.label :content %><br>
+    <%= form.text_area :content, id: :post_content, class: 'form-control', rows: '15' %>
   </div>
 
 <!--
@@ -28,7 +30,8 @@
   </div>
 -->
 
+  <br>
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: 'btn btn-dark' %>
   </div>
 <% end %>

@@ -1,0 +1,35 @@
+<% provide :title, @user.name + '\'s profile' %>
+
+<h2 style="margin-top:.5em;margin-bottom:.5em"><%= @user.name %></h2>
+<% if @user == current_user %>
+  <%= button_to 'Edit my profile', edit_user_registration_path(@user), method: :get, class: 'btn btn-dark' %>
+  <br>
+<% end %>
+
+<strong>Email: </strong><br>
+<p><%= @user.email %></p>
+
+<strong>Name: </strong><br>
+<p><%= @user.name %></p>
+
+<strong>Bio: </strong><br>
+<p><%= @user.bio %></p>
+
+<strong>Posts: </strong><br><br>
+
+<%#= paginate @posts %>
+
+<% @posts.each_with_index do |post, index| %>
+  <% if index % 2 == 0 %>
+    <div class="card bg-light">
+      <%= link_to post.title, post, class: 'card-body text-dark' %>
+    </div>
+  <% else %>
+    <div class="card bg-dark">
+      <%= link_to post.title, post, class: 'card-body text-light' %>
+    </div>
+  <% end %>
+<% end %>
+
+<%#= paginate @posts %>
+
