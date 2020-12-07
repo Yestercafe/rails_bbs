@@ -9,16 +9,18 @@
     <%= button_to 'Back', root_path, method: :get, class: 'btn btn-dark' %>
   </div>
   <div class="col-6" style="text-align:right">
-    <% if current_user == @post.user %>
     <div class="btn-group">
-      <% if liked?(current_user.id, @post.id) %>
-        <%= link_to 'Unlike('+ like_number(@post.id) +')', unlike_path(post_id: @post.id), method: :delete, class: 'btn btn-dark' %>
-      <% else %>
-        <%= link_to 'Like('+ like_number(@post.id) +')', like_path(post_id: @post.id), class: 'btn btn-dark' %>
-      <% end %> 
-      <%= button_to 'Delete this post', @post, method: :delete, class: 'btn btn-dark', data: { confirm: 'Are you sure?' } %>
+      <% if user_signed_in? %>
+        <% if liked?(current_user.id, @post.id) %>
+          <%= link_to 'Unlike('+ like_number(@post.id) +')', unlike_path(post_id: @post.id), method: :delete, class: 'btn btn-dark' %>
+        <% else %>
+          <%= link_to 'Like('+ like_number(@post.id) +')', like_path(post_id: @post.id), class: 'btn btn-dark' %>
+        <% end %>
+        <% if current_user == @post.user %>
+          <%= button_to 'Delete this post', @post, method: :delete, class: 'btn btn-dark', data: { confirm: 'Are you sure?' } %>
+        <% end %>
+      <% end %>
     </div>
-    <% end %>
   </div>
 </div>
 
