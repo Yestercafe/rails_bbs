@@ -1,0 +1,36 @@
+<script type="text/javascript">
+    $(function(){
+      var height=$(window).height();
+      $('#music').css({
+        'height':height,
+      });
+      var n=1;
+      $('#music').click(function(e){
+        if(n%4==0){
+          var $i=$('<b></b>').text('♪');
+        }else if(n%4==1){
+          var $i=$('<b></b>').text('♫');
+        }else if(n%4==2){
+          var $i=$('<b></b>').text('♬');
+        }else{
+          var $i=$('<b></b>').text('♩');
+        }
+        n++;
+        var x=e.pageX,y=e.pageY;
+        $i.css({
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "color": 'grey',
+            "font-size": 24,
+          });
+          $("body").append($i);
+          $i.animate({
+            "top": y - 180,
+            "opacity": 0
+          }, 1500, function() {
+            $i.remove();
+          });
+      });
+    });
+</script>

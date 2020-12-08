@@ -1,4 +1,5 @@
 <% provide :title, @user.name + '\'s profile' %>
+<%= render 'shared/click' %>
 
 <h2 style="margin-top:.5em;margin-bottom:.5em"><%= @user.name %></h2>
 <% if @user == current_user %>
