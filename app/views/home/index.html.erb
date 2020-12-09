@@ -12,6 +12,43 @@
   </p>
 <% end %>
 
+<style>
+  /* Make the image fully responsive */
+  .carousel-inner img {
+      width: 100%;
+      height: 100%;
+  }
+</style>
+
+<div id="slide" class="carousel slide" data-ride="carousel">
+ 
+  <ul class="carousel-indicators">
+    <li data-target="#slide" data-slide-to="0" class="active"></li>
+    <li data-target="#slide" data-slide-to="1"></li>
+    <li data-target="#slide" data-slide-to="2"></li>
+  </ul>
+
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="<%= asset_path('slide1.jpg') %>">
+    </div>
+    <div class="carousel-item">
+      <img src="<%= asset_path('slide2.jpg') %>">
+    </div>
+    <div class="carousel-item">
+      <img src="<%= asset_path('slide3.jpg') %>">
+    </div>
+  </div>
+ 
+  <a class="carousel-control-prev" href="#slide" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#slide" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+ 
+</div>
+
 <%#= will_paginate @posts, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
 <%= paginate @posts %>
 
