@@ -1,7 +1,7 @@
 module ApplicationHelper
 
   def generate_title(sub_title)
-    base_title = "20ch Music BBS"
+    base_title = "20ch BBS"
     if sub_title.empty?
       base_title
     else
